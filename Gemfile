@@ -10,3 +10,7 @@ gem "faraday", "~> 2.14"
 gem "dotenv", "~> 3.1"
 
 gem "activesupport", "~> 8.1"
+
+gem "rackup", "~> 2.2"
+
+gem "puma", "~> 7.1"

@@ -35,6 +35,9 @@ GEM
       ruby2_keywords (~> 0.0.1)
     net-http (0.8.0)
       uri (>= 0.11.1)
+    nio4r (2.7.5)
+    puma (7.1.0)
+      nio4r (~> 2.0)
     rack (3.2.4)
     rack-protection (4.2.1)
       base64 (>= 0.1.0)
@@ -43,6 +46,8 @@ GEM
     rack-session (2.1.1)
       base64 (>= 0.1.0)
       rack (>= 3.0.0)
+    rackup (2.2.1)
+      rack (>= 3)
     ruby2_keywords (0.0.5)
     securerandom (0.4.1)
     sinatra (4.2.1)
@@ -65,6 +70,8 @@ DEPENDENCIES
   activesupport (~> 8.1)
   dotenv (~> 3.1)
   faraday (~> 2.14)
+  puma (~> 7.1)
+  rackup (~> 2.2)
   sinatra (~> 4.2)
 
 BUNDLED WITH

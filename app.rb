@@ -28,6 +28,7 @@ def humanize_item(item) = ITEM_MAPPING[item.to_sym] || item.humanize
 def humanize_status(status) = STATUS_MAPPING[status.to_sym] || status.humanize
 
 before do
+  headers "X-Frame-Options" => "ALLOWALL"
   @migration_data = CACHE.fetch("migration_status", expires_in: 1.minute) { fetch_migration_data }
 end
 

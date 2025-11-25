@@ -260,24 +260,24 @@ progress::-moz-progress-bar {
 }
 
 /* Add more status classes if needed, e.g., for complete, paused, etc. */
-.status-complete .dot {
-    background-color: #2eb67a; /* Green for complete */
-}
+/*.status-complete .dot {*/
+/*    background-color: #2eb67a; !* Green for complete *!*/
+/*}*/
 
-.status-scheduled .dot {
-    background-color: #60a5fa;
-}
+/*.status-scheduled .dot {*/
+/*    background-color: #60a5fa;*/
+/*}*/
 
-.status-paused .dot {
-    background-color: #f87171;
-}
+/*.status-paused .dot {*/
+/*    background-color: #f87171;*/
+/*}*/
 
 .status-not-started-icon {
     color: #d1d1d1;
 }
 
 .status-complete-icon {
-    /*color: #2eb67a;*/
+    color: #2eb67a;
 }
 
 :root {

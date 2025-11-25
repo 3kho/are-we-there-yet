@@ -7,6 +7,8 @@ require "active_support/cache"
 
 CACHE = ActiveSupport::Cache::MemoryStore.new
 
+ITS_DONE=!!ENV["ITS_DONE"]
+
 ITEM_MAPPING = {
   migration: "Migration",
   users: "Users",
@@ -29,9 +31,20 @@ def humanize_status(status) = STATUS_MAPPING[status.to_sym] || status.humanize
 
 before do
   headers "X-Frame-Options" => "ALLOWALL"
-  data = CACHE.fetch("migration_status", expires_in: 1.minute) { fetch_migration_data }
-  @migration_data = data[:data]
-  @last_updated = data[:updated]
+  @its_done = ITS_DONE
+  
+  if @its_done
+    @migration_data = {
+      "percent_completed" => 100,
+      "status" => ITEM_MAPPING.keys.map { |k| [k.to_s, "complete"] }.to_h
+    }
+    @last_updated = Time.now
+  else
+    data = CACHE.fetch("migration_status", expires_in: 1.minute) { fetch_migration_data }
+    @migration_data = data[:data]
+    @last_updated = data[:updated]
+  end
+  
   @icon_url = CACHE.fetch("icon", expires_in: 5.minutes) { fetch_icon }
 end
 

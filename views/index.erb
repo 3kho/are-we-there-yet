@@ -16,7 +16,11 @@
 </header>
 <div class="center-section">
   <div class="stylized-logo"><img src="<%= @icon_url %>"/></div>
-  <div class="migration-title">Migration in progress</div>
+  <% if @its_done %>
+    <div class="migration-title" style="font-size: 8rem">YES, WE'RE MIGRATED!</div>
+  <% else %>
+    <div class="migration-title">Migration in progress</div>
+  <% end %>
   <div class="migration-from-to"><%= from_workspace %> → <%= to_workspace %>
     <sup><small>(but with enterprise!)</small></sup></div>
 </div>
@@ -26,7 +30,7 @@
   <div class="progress-text"><%= progress %>%</div>
   <div class="last-updated">Last updated: <%= last_updated %></div>
 </div>
-<% if progress == 100 || @migration_data["status"]&.all? { |item, status| status == "complete" } %>
+<% if (progress == 100 || @migration_data["status"]&.all? { |item, status| status == "complete" }) && !@its_done %>
   <div class="banner">
     <b>hang tight!</b> <br/>
     Slack has finished their side of this migration, but there are a
